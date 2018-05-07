@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Estoque</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h1>Informações do Estoque</h1>
+		<p:dataTable value="#{estoque.listaCresc}" var="item">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Produto" />
+				</f:facet>
+				<h:outputText value="#{item.produto.descricao}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="ID Estoque" />
+				</f:facet>
+				<h:outputText value="#{item.id}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Quantidade" />
+				</f:facet>
+				<h:outputText value="#{item.quantidade}" />
+			</p:column>
+		</p:dataTable>
+		<br />
+		<p:outputLabel value="Digite nome do produto: " />
+		<p:inputText value="#{estoque.escolha}" />
+		<br />
+		<p:commandButton value="Pesquisar Produto" action="#{estoque.Procura}" />
+	</h:form>
+</h:body>
+</html>

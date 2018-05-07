@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Pesquisa Produto</title>
+</h:head>
+<h:body>
+
+	<h:form id="buscar">
+		<h1>Informações do Produto</h1>
+		<p:dataTable value="#{estoque.getProduto(estoque.escolha)}" var="item">
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Produto" />
+				</f:facet>
+				<h:outputText value="#{item.descricao}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Valor" />
+				</f:facet>
+				<h:outputText value="#{item.valor}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Quantidade minima" />
+				</f:facet>
+				<h:outputText value="#{item.quantidade_minima}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Data cadastro" />
+				</f:facet>
+				<h:outputText value="#{item.data_cadastro}" />
+			</p:column>
+			<p:column>
+				<f:facet name="header">
+					<h:outputText value="Quantidade em estoque" />
+				</f:facet>
+				<h:outputText value="#{estoque.getEstoque(item.id).quantidade}" />
+			</p:column>
+		</p:dataTable>
+		<br/>
+		<p:button value="Voltar" outcome="Inicio.xhtml"/>
+	</h:form>
+</h:body>
+</html>
